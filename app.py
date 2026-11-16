@@ -1413,7 +1413,7 @@ else:
                     with st.spinner("⚡ Creating your quiz..."):
                         context = get_study_context() if st.session_state.study_file else quiz_topic
                         
-prompt = f'Create exactly {count} {difficulty.lower()} multiple-choice questions about {quiz_topic or st.session_state.study_topic}. Use the supplied study material as the source when available. Return ONLY valid JSON in this shape: {{"questions":[{{"question":"...","options":["A. ...","B. ...","C. ...","D. ..."],"answer":"A. ...","explanation":"..."}}]}}. Each question needs four options and answer must exactly match one option. No Markdown fences or extra text.'
+                        prompt = f'Create exactly {count} {difficulty.lower()} multiple-choice questions about {quiz_topic or st.session_state.study_topic}. Use the supplied study material as the source when available. Return ONLY valid JSON in this shape: {{"questions":[{{"question":"...","options":["A. ...","B. ...","C. ...","D. ..."],"answer":"A. ...","explanation":"..."}}]}}. Each question needs four options and answer must exactly match one option. No Markdown fences or extra text.'
 
                         raw = generate_feature_content(prompt, context, task_type="quiz")
                         data = parse_json_response(raw)
